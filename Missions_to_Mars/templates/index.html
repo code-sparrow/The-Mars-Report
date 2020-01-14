@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <!--Some more custom css-->
+    <!--AKA fun with gradients-->
+    <style>
+      #jumbo_grad {
+        background: linear-gradient(to bottom right, darkslategrey, #5e2e2e);
+      }
+      #news_grad {
+        background: linear-gradient(to bottom, #5e2e2e, dimgrey, rgb(170, 167, 167));
+      }
+      #feature_grad {
+        background: linear-gradient(to bottom,rgb(235, 217, 217),gainsboro,rgb(180, 154, 154));
+      }
+      #main_grad {
+        background: repeating-radial-gradient(#9c827b 25%, #866f96 30%, #866860 45%);
+      }
+      #text_outline {text-shadow:-1px -1px 0 gainsboro, 1px -1px 0 gainsboro,-1px 1px 0 gainsboro,1px 1px 0 gainsboro;
+      }
+      table {
+        border: 2px solid rgb(45, 87, 121);
+      }
+      tr, td { 
+        padding: 6px;
+      }
+      tr:nth-child(even) {background-color: #f1dddd;}
+    </style>
+
+    <!--Tab Title-->
+    <title>Mission to Mars</title>
+
+  </head>
+
+<body>
+  <!--Main Body Container-->
+  <div class="container-fluid" id="main_grad">
+
+    <!--Bootstrap JumboTron-->
+    <div class="jumbotron text-center" id="jumbo_grad" style="background-color: darkslategrey;">
+      <h1 id="text_outline"><b>Mission To Mars</b></h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <hr>
+
+    <!--Latest Mars News Container-->
+    <div class="row" id="news_grad" style="color: floralwhite; background-color: dimgrey;">
+      <div class="col-12 mx-auto p-3">
+        <h2>Latest Mars News</h2>
+        <h4>{{ mission.news_title }}</h4>
+        <p>{{ mission.news_p }}</p>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row" id="feature_grad">
+
+      <div class="col-md-7 mx-auto p-3">
+
+        <!--Featured Mars Image Container-->
+        <h2>Featured Mars Image</h2>
+        <img class="img-fluid" src="{{ mission.featured_image_url }}" alt="Featured Image">
+      </div>
+
+      <div class="col-md-5 mx-auto p-4">
+
+        <!--Mars Weather Tweet Container-->
+        <div class="row" style="padding: 8px; border: 3px solid steelblue; border-radius: 4px;">
+          <h5>Current Weather on Mars</h5>
+          <p>{{ mission.mars_weather }}</p>
+        </div>
+        <hr>
+
+        <!--Mars Fact Table-->
+        <div class="row p-2 px-3">
+          <h5>Mars Facts</h5>
+        </div>
+        <div class="row p-1 px-3">
+          {{mission.table | safe}}
+        </div>
+
+      </div>
+
+    </div>
+    <hr>
+    <h2 class="text-center">Mars Hemispheres</h2>
+    <hr>
+    <div class="row">
+      {% for i in [0, 1] %}
+      <div class="col-md-6 p-3">
+        <img class="img-fluid" src="{{ mission.hemisphere_image_urls[i]['img_url'] }}">
+        <h4 class="text-center">{{ mission.hemisphere_image_urls[i]['title'] }}</h4>
+      </div>
+      {% endfor %}
+    </div>
+    <hr>
+    <div class="row">
+      {% for i in [2, 3] %}
+      <div class="col-md-6 p-3">
+        <img class="img-fluid" src="{{ mission.hemisphere_image_urls[i]['img_url'] }}">
+        <h4 class="text-center">{{ mission.hemisphere_image_urls[i]['title'] }}</h4>
+      </div>
+      {% endfor %}
+    </div>
+    <hr>
+  </div>
+
+  <!--Bootsrap JS-->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  
+</body>
+
+</html>
