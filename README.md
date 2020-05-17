@@ -1,6 +1,8 @@
-# Web Scraping Homework - Mission to Mars
+# **_The Mars Report_**
 
-![mission_to_mars](Images/mission_to_mars.png)
+A web application that scrapes multiple websites for Mars-related information using a Flask powered backend that stores the data in a mongoDB collection and displays the latest information in a single HTML page.
+
+<img src="Images/mission_to_mars.png" width="60%">  
 
 In this assignment, you will build a web application that scrapes various websites for data related to the Mission to Mars and displays the information in a single HTML page. The following outlines what you need to do.
 
