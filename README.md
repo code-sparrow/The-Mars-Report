@@ -5,9 +5,23 @@ A web application that scrapes multiple websites for Mars-related information us
 <img src="Images/mission_to_mars.png" width="60%">  
 
 
+## Data Sources and Technologies  
+* [NASA Mars News Site](https://mars.nasa.gov/news/)  
+* [JPL Mars Space Images](https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars)  
+* [Mars Weather Twitter Account](https://twitter.com/marswxreport?lang=en) 
+* [Mars Facts Table from Space-Facts site](https://space-facts.com/mars/) 
+* [Mars Hemispheres Images from USGS Astrogeology site](https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars)
+* MongoDB, Python, Pandas, PyMongo, BeautifulSoup, Splinter, Flask, ChromeDriver, HTML, CSS, Bootstrap
+
+## Backend  
+A Flask App:  
+* connects to the Mongo database using PyMongo  
+* The home route gets the latest mongoDB collection and renders the HTML templates    
+* injecting the data into the HTML  
+* A scrape route runs the web scraping functions, updates the mongoDB collection, and redirects back to the home route
 
 
-## Step 1 - Scraping
+## Scraping
 
 Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
