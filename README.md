@@ -14,15 +14,15 @@ A web application that scrapes multiple websites for Mars-related information us
 * MongoDB, Python, Pandas, PyMongo, BeautifulSoup, Splinter, Flask, ChromeDriver, HTML, CSS, Bootstrap  
 
 ## Backend  
-A [Flask App](Missions_to_Mars/app.py){:target="_blank"}:  
+A [Flask App](Missions_to_Mars/app.py)  
 * connects to the Mongo database using PyMongo  
-* The home route gets the latest mongoDB collection and renders the HTML template    
+* The home route gets the latest mongoDB collection and renders the [HTML template](Missions_to_Mars/templates/index.html)     
 * injecting the data into the HTML  
 * A scrape route runs the web scraping functions, updates the mongoDB collection, and redirects back to the home route  
 
 ## Web Scraping
-* Initial testing of the web scraping was done in a [Jupyter Notebook](Missions_to_Mars/mission_to_mars.ipynb){:target="_blank"}
-* The [web scraping module](Missions_to_Mars/scrape_mars.py){:target="_blank"} is ran when the user clicks the button at the top of the page
+* Initial testing of the web scraping was done in a [Jupyter Notebook](Missions_to_Mars/mission_to_mars.ipynb)
+* The [web scraping module](Missions_to_Mars/scrape_mars.py) is ran when the user clicks the button at the top of the page
 
 Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
