@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup as bs
 from splinter import Browser
 import pandas as pd
 import time
+import re
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
@@ -17,15 +18,20 @@ def scrape():
     url = 'https://mars.nasa.gov/news'
     browser.visit(url)
 
-    time.sleep(1)
+    browser.is_element_present_by_value("article_teaser_body", wait_time=5)
 
     # Scrape page into Soup
     html = browser.html
     soup = bs(html, "html.parser")
 
     #getting title and paragraph
-    news_title = soup.find('div', class_="content_title").text
-    news_p = soup.find('div', class_="rollover_description_inner").text
+    news_title_con = soup.find_all('div', class_="content_title")
+    if news_title_con[0].text == "Mars Now":
+        news_title = news_title_con[1].text
+    else:
+        news_title = news_title_con[0].text
+
+    news_p = soup.find('div', class_="article_teaser_body").text
 
     #------------------------------------------------------------------------
 
@@ -65,7 +71,16 @@ def scrape():
         mars_weather = soup.find('p', class_='TweetTextSize').text
     except Exception as e:
         print(e)
-        mars_weather = "Latest Mars Weather Tweet is not Currently Available: Try scraping again in a little while."
+        try:
+            con = browser.find_by_tag('div')
+            for s in con:
+                x = re.findall('InSight[^<]*hPa', s.html, flags=re.S)
+                if x:
+                    mars_weather = x[0]
+                    break
+        except Exception as e:
+            print(e)
+            mars_weather = "Latest Mars Weather Tweet is not Currently Available: Try scraping again in a little while."
 
     #------------------------------------------------------------------------
 

@@ -1,0 +1,9 @@
+DevTools listening on ws://127.0.0.1:12018/devtools/browser/ba671605-cbe7-4841-9806-69754ccf6824
+[16724:23480:0517/032733.337:ERROR:browser_switcher_service.cc(238)] XXX Init()
+'NoneType' object has no attribute 'text'
+C:\Users\jscha\Anaconda3\lib\site-packages\splinter\driver\webdriver\__init__.py:528: FutureWarning: browser.find_link_by_partial_text is deprecated. Use browser.links.find_by_partial_text instead.
+  FutureWarning,
+C:\Users\jscha\Desktop\Homework\12-Web-Scraping-and-Document-Databases\The-Mars-Report\Missions_to_Mars\app.py:31: DeprecationWarning: update is deprecated. Use replace_one, update_one or update_many instead.
+  mongo.db.collection.update({}, mars_data, upsert=True)
+127.0.0.1 - - [17/May/2020 03:27:59] "[32mGET /scrape HTTP/1.1[0m" 302 -
+127.0.0.1 - - [17/May/2020 03:27:59] "[37mGET / HTTP/1.1[0m" 200 -
