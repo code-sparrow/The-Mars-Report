@@ -6,22 +6,22 @@ A web application that scrapes multiple websites for Mars-related information us
 
 
 ## Data Sources and Technologies  
-* [NASA Mars News Site](https://mars.nasa.gov/news/)  
-* [JPL Mars Space Images](https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars)  
-* [Mars Weather Twitter Account](https://twitter.com/marswxreport?lang=en) 
-* [Mars Facts Table from Space-Facts site](https://space-facts.com/mars/) 
-* [Mars Hemispheres Images from USGS Astrogeology site](https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars)
-* MongoDB, Python, Pandas, PyMongo, BeautifulSoup, Splinter, Flask, ChromeDriver, HTML, CSS, Bootstrap
+* <a href="https://mars.nasa.gov/news/" target="_blank">NASA Mars News Site</a>  
+* <a href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars" target="_blank">JPL Mars Space Images</a>  
+* <a href="https://twitter.com/marswxreport?lang=en" target="_blank">Mars Weather Twitter Account</a> 
+* <a href="https://space-facts.com/mars/" target="_blank">Mars Facts Table from Space-Facts site</a> 
+* <a href="https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars" target="_blank">Mars Hemispheres Images from USGS Astrogeology site</a>  
+* MongoDB, Python, Pandas, PyMongo, BeautifulSoup, Splinter, Flask, ChromeDriver, HTML, CSS, Bootstrap  
 
 ## Backend  
 A Flask App:  
 * connects to the Mongo database using PyMongo  
-* The home route gets the latest mongoDB collection and renders the HTML templates    
+* The home route gets the latest mongoDB collection and renders the HTML template    
 * injecting the data into the HTML  
-* A scrape route runs the web scraping functions, updates the mongoDB collection, and redirects back to the home route
+* A scrape route runs the web scraping functions, updates the mongoDB collection, and redirects back to the home route  
 
 
-## Scraping
+## Web Scraping
 
 Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
