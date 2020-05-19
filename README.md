@@ -23,6 +23,22 @@ A [Flask App](Missions_to_Mars/app.py)
 ## Web Scraping
 * Initial testing of the web scraping was done in a [Jupyter Notebook](Missions_to_Mars/mission_to_mars.ipynb)
 * The [web scraping module](Missions_to_Mars/scrape_mars.py) is ran when the user clicks the button at the top of the page
+* First, a Browser istance is created with Splinter using the Chrome driver 
+* As each URL is visited with the browser instance, the HTML is passed to and parsed with BeautifulSoup  
+&nbsp;&nbsp;&nbsp;&nbsp;`browser.visit(url)`&nbsp;&nbsp;&nbsp;&nbsp;`html = browser.html`&nbsp;&nbsp;&nbsp;&nbsp;`soup = bs(html, "html.parser")`  
+* In each case, the HTML in the "soup" object is navigated, and the appropriate text is extracted
+* typically based on tags and classes, for example `soup.find('div', class_="article_teaser_body").text`
+* This approach failed only with Twitter, where strictly Splinter and regular expressions were used. Such that:
+            ```con = browser.find_by_tag('div')
+               for s in con:
+                   x = re.findall('InSight[^<]*hPa', s.html, flags=re.S)
+                       if x:
+                           mars_weather = x[0]
+                           break```
+
+
+
+
 
 Complete your initial scraping using Jupyter Notebook, BeautifulSoup, Pandas, and Requests/Splinter.
 
