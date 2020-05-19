@@ -29,12 +29,16 @@ A [Flask App](Missions_to_Mars/app.py)
 * In each case, the HTML in the "soup" object is navigated, and the appropriate text is extracted
 * typically based on tags and classes, for example `soup.find('div', class_="article_teaser_body").text`
 * This approach failed only with Twitter, where strictly Splinter and regular expressions were used. Such that:
-            ```con = browser.find_by_tag('div')
-               for s in con:
-                   x = re.findall('InSight[^<]*hPa', s.html, flags=re.S)
-                       if x:
-                           mars_weather = x[0]
-                           break```
+
+```python
+con = browser.find_by_tag('div')
+for s in con:
+        x = re.findall('InSight[^<]*hPa', s.html, flags=re.S)
+        if x:
+                mars_weather = x[0]
+                break
+```
+	
 
 
 
