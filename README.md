@@ -18,14 +18,14 @@ A [Flask App](Missions_to_Mars/app.py)
 * connects to the Mongo database using PyMongo  
 * The home route gets the latest mongoDB collection and renders the [HTML template](Missions_to_Mars/templates/index.html)     
 * injecting the data into the HTML  
-* A scrape route runs the web scraping functions, updates the mongoDB collection, and redirects back to the home route  
+* A scrape route runs the web scraping functions, updates the mongoDB collection with the freshly scraped text data, and redirects back to the home route, where the HTML template is re-rendered     
 
 ## Web Scraping
 * Initial testing of the web scraping was done in a [Jupyter Notebook](Missions_to_Mars/mission_to_mars.ipynb)
 * The [web scraping module](Missions_to_Mars/scrape_mars.py) is ran when the user clicks the button at the top of the page
 * First, a Browser istance is created with Splinter using the Chrome driver 
 * As each URL is visited with the browser instance, the HTML is passed to and parsed with BeautifulSoup  
-&nbsp;&nbsp;&nbsp;&nbsp;```python browser.visit(url)```&nbsp;&nbsp;&nbsp;&nbsp;`html = browser.html`&nbsp;&nbsp;&nbsp;&nbsp;`soup = bs(html, "html.parser")`  
+&nbsp;&nbsp;&nbsp;&nbsp;`browser.visit(url)`&nbsp;&nbsp;&nbsp;&nbsp;`html = browser.html`&nbsp;&nbsp;&nbsp;&nbsp;`soup = bs(html, "html.parser")`  
 * In each case, the HTML in the "soup" object is navigated, and the appropriate text is extracted
 * typically based on tags and classes, for example `soup.find('div', class_="article_teaser_body").text`
 * This approach failed only with Twitter, where strictly Splinter and regular expressions were used. Such that:
@@ -38,7 +38,18 @@ for s in con:
         mars_weather = x[0]
         break
 ```
-	
+* Finally, a dictionary is created with all of the scraped text, and returned to the scrape route in the Flask app
+
+```python
+mars_data = {
+    "news_title": news_title,
+    "news_p": news_p,
+    "featured_image_url": featured_image_url,
+    "mars_weather": mars_weather,
+    "table": tables,
+    "hemisphere_image_urls": hemisphere_image_urls
+}
+```	
 
 
 
